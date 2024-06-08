@@ -1,0 +1,12 @@
+---
+- name: Create a directory named 'cc' on all servers
+  hosts: servers
+  become: yes
+  tasks:
+    - name: Ensure the 'cc' directory is present
+      file:
+        path: /home/ubuntu/cc
+        state: directory
+        owner: ubuntu
+        group: ubuntu
+        mode: '0755'
