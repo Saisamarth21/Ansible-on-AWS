@@ -1,0 +1,19 @@
+---
+- name: Install Nginx and print version on all servers
+  hosts: servers
+  become: yes
+  tasks:
+    - name: Ensure Nginx is installed
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Print Nginx version
+      command: nginx -v
+      register: nginx_version
+      ignore_errors: yes
+
+    - name: Show Nginx version
+      debug:
+        var: nginx_version.stderr
