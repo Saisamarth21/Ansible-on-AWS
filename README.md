@@ -43,8 +43,14 @@ Server-2 ansible_host=ip address ansible_connection=ssh ansible_user=ubuntu
 anisble_ssh_private_key_file=/home/ubuntu/key.pem
 ansible_python_interpreter=/usr/bin/python3
 ```
+### iii)Making Private Key Secure
+Use this command to make the Private key secure :
 
-### iii) Add Private Key to SSH Agent
+```bash
+chmod 400 key.pem
+```
+
+### iv) Add Private Key to SSH Agent
 
 Copy the .pem key file downloaded locally to the master server, then execute:
 
@@ -52,7 +58,7 @@ Copy the .pem key file downloaded locally to the master server, then execute:
 ssh-agent bash
 ssh-add ~/.ssh/key.pem
 ```
-#### iv) Ping Other Servers
+#### v) Ping Other Servers
 
 Verify connectivity to other servers from the master server:
 
@@ -62,7 +68,7 @@ ansible all -m ping -i /etc/ansible/hosts
 
 ## 4. Create and Run Ansible Playbooks
 
-- Create playbooks using YAML files for desired tasks.
+- Create playbooks using YAML files for desired tasks, some example playbooks are uploaded above ``
 - To run a playbook, use the following command:
 
 ```bash
