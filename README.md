@@ -68,9 +68,22 @@ ansible all -m ping -i /etc/ansible/hosts
 
 ## 4. Create and Run Ansible Playbooks
 
-- Create playbooks using YAML files for desired tasks, some example playbooks are uploaded above ``
+- Create playbooks using YAML files for desired tasks, some example playbooks are uploaded above.
 - To run a playbook, use the following command:
 
 ```bash
 ansible-playbook -i /etc/ansible/hosts file.yml
+```
+#### i)Executing the above example
+
+- Create a playbook using YAML file and add this code `Ansible-on-AWS/install_nginx.yml`
+- Execute the following command to run the playbook:
+
+```bash
+ansible-playbook -i /etc/ansible/hosts install_nginx.yml
+```
+- To print the Nginx version on the CLI for all servers:
+
+```bash
+ansible servers -i /etc/ansible/hosts -m command -a "nginx -v"
 ```
