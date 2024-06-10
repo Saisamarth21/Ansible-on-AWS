@@ -16,7 +16,7 @@ This project details the setup of Ansible on AWS EC2 instances for efficient sys
 ## 2. SSH into AWS Instances
 
 - Download an SSH client like [Termius](https://termius.com/download/windows) for SSH access.
-- Connect to each instance using the public IP provided by AWS, the downloaded .pem key file, and your PC name.
+- Connect to each instance using the public IP provided by AWS, the downloaded .pem key file, and PC name according to AWS instance, Usually its `ec2-user` or `ubuntu`.
 
 ## 3. Setup Ansible on Master Server
 
