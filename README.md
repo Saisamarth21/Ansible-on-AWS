@@ -29,36 +29,36 @@ sudo apt-add-repository ppa:ansible/ansible
 sudo apt update
 sudo apt install ansible
 ```
+### ii)Creating Private Key in Master server, then Making Private Key Secure
+Copy the .pem key file downloaded locally to the master server, Then use this command to make the Private key secure :
 
-### ii) Setting Up the Inventory File
+```bash
+chmod 400 key.pem
+```
+### iii) Setting Up the Inventory File
 
-Edit the /etc/ansible/hosts file on your Ansible control node to define your inventory.
+Edit the `/etc/ansible/hosts` file on your Ansible control node to define your inventory.
 
 ```bash
 [servers]
-Server-1 ansible_host=ip address ansible_connection=ssh ansible_user=ubuntu
-Server-2 ansible_host=ip address ansible_connection=ssh ansible_user=ubuntu
+Server-1 ansible_host=<ip address> ansible_connection=ssh ansible_user=ubuntu
+Server-2 ansible_host=<ip address> ansible_connection=ssh ansible_user=ubuntu
 
 [all:vars]
 anisble_ssh_private_key_file=/home/ubuntu/key.pem
 ansible_python_interpreter=/usr/bin/python3
 ```
-### iii)Making Private Key Secure
-Use this command to make the Private key secure :
 
-```bash
-chmod 400 key.pem
-```
 
 ### iv) Add Private Key to SSH Agent
 
-Copy the .pem key file downloaded locally to the master server, then execute:
+To add private key to SSH Agent execute this:
 
 ```bash
 ssh-agent bash
 ssh-add ~/.ssh/key.pem
 ```
-#### v) Ping Other Servers
+### v) Ping Other Servers
 
 Verify connectivity to other servers from the master server:
 
